@@ -42,7 +42,7 @@ var formatDate = function (date) {
 };
 
 //seed database
-for (var i = 0; i < 50; i++) {
+for (var i = 0; i < 100; i++) {
   var author = faker.internet.userName();
   var rating = Math.floor(Math.random() * 5 + 1);
   var date = faker.date.past();
