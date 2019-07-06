@@ -8,18 +8,18 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => console.log('connected to DB'));
 
 let reviewSchema = new mongoose.Schema({
-  Author: String,
-  Rating: Number,
-  Date: String,
-  Review: {
-    Tittle: String,
-    Review: String },
-  Popularity: Number
+  author: String,
+  rating: Number,
+  date: String,
+  review: {
+    tittle: String,
+    review: String },
+  popularity: Number
 });
 
-let Review = mongoose.model('Review', reviewSchema);
+let Reviews = mongoose.model('Reviews', reviewSchema);
 
 module.exports = {
   db: db,
-  Review: Review
+  Reviews: Reviews
 };
