@@ -8,7 +8,7 @@ app.get('/', (req, res) => res.send('YUP'));
 app.get('/reviews', (req, res) => {
   Reviews.find()
     .then((data) => res.send(data))
-    .catch((err) => res.status(500).send('Error on our side.'));
+    .catch((err) => res.status(500).send('Error on our side'));
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
