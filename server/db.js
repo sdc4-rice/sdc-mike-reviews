@@ -10,7 +10,7 @@ db.once('open', () => console.log('connected to DB'));
 let reviewSchema = new mongoose.Schema({
   author: String,
   rating: Number,
-  date: String,
+  date: Date,
   review: {
     title: String,
     review: String },
