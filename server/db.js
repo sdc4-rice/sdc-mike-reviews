@@ -20,6 +20,5 @@ let reviewSchema = new mongoose.Schema({
 let Reviews = mongoose.model('Reviews', reviewSchema);
 
 module.exports = {
-  db: db,
-  Reviews: Reviews
+  db, Reviews
 };
