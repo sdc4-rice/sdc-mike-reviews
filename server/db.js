@@ -12,7 +12,7 @@ let reviewSchema = new mongoose.Schema({
   rating: Number,
   date: String,
   review: {
-    tittle: String,
+    title: String,
     review: String },
   popularity: Number
 });
