@@ -59,7 +59,7 @@ db.collections['reviews'].drop(() => {
       date: date,
       popularity: popularity,
       review: {
-        tittle: text.title,
+        title: text.title,
         review: text.review
       }
     };
