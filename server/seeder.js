@@ -1,5 +1,5 @@
 const faker = require('faker');
-const {db, Reviews} = require('./db.js');
+const {db, Reviews} = require('./db.js'); // commented out to stop jest from running full code
 
 var makeReview = function () {
   return {
@@ -33,8 +33,8 @@ var seedDB = function() {
   });
 };
 
-seedDB();
+// seedDB(); //commented out to see if running test would stop from seeding DB.
 
 module.exports = {
-  seedDB, makeReview
+  makeReview, seedDB // commmenter out to see why jest was running seedDB
 };
