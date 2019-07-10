@@ -1,5 +1,8 @@
 {
   "name": "napoleon-service",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "version": "1.0.0",
   "description": "> Project description",
   "main": "./server/index.js",
@@ -7,7 +10,7 @@
     "seed": "node ./server/seeder.js",
     "server:dev": "nodemon --watch server",
     "start": "node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "express": "^4.17.1",
