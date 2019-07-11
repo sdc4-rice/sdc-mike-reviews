@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/fec4-gandolf/Napoleon-Service
+  - https://github.com/fec4-gandolf/bid-buy
+  - https://github.com/fec4-gandolf/PeopleAlsoViewed
+  - https://github.com/fec4-gandolf/images-modal
 
 ## Table of Contents
 
@@ -18,6 +18,7 @@
 ## Usage
 
 > Some usage instructions
+
 
 ## Requirements
 

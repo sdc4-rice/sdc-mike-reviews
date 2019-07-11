@@ -1,13 +1,15 @@
 {
-  "name": "ratings-and-reviews",
-  "version": "1.0",
-  "description": "Ratings and Reviews sections of a mock ebay",
-  "author": "Napoleon De La Peña",
-  "license": "",
-  "engines": {
-    "node": ">=6.13.0"
+  "name": "napoleon-service",
+  "version": "1.0.0",
+  "description": "> Project description",
+  "main": "./server/index.js",
+  "scripts": {
+    "seed": "node ./server/seeder.js",
+    "server:dev": "nodemon --watch server",
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+
   },
-  "scripts": {},
   "dependencies": {
     "express": "^4.17.1",
     "faker": "^4.1.0",
@@ -15,7 +17,17 @@
     "node": "^12.6.0"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
-    "nodemon": "^1.19.1"
-  }
+    "nodemon": "^1.19.1",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fec4-gandolf/Napoleon-Service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fec4-gandolf/Napoleon-Service/issues"
+  },
+  "homepage": "https://github.com/fec4-gandolf/Napoleon-Service#readme"
 }
