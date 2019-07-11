@@ -1,24 +1,28 @@
 {
   "name": "napoleon-service",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "version": "1.0.0",
   "description": "> Project description",
   "main": "./server/index.js",
   "scripts": {
-    "seed": "node ./server/seeder.js",
+    "seed": "node ./server/seed.js",
     "server:dev": "nodemon --watch server",
     "start": "node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
-
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "mongoose": "^5.6.3",
     "node": "^12.6.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1"
   },
   "repository": {
     "type": "git",
