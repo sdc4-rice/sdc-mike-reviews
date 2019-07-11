@@ -10,7 +10,7 @@
     "seed": "node ./server/seed.js",
     "server:dev": "nodemon --watch server",
     "start": "node server",
-    "test": "jest --detectOpenHandles"
+    "test": "jest"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
