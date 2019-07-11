@@ -1,7 +1,6 @@
-# Project Name
+# Ratings & Reviews
 
-> Project description
-
+> A mock Ratings & Reviews component of eBay.
 ## Related Projects
 
   - https://github.com/fec4-gandolf/Napoleon-Service
@@ -17,7 +16,7 @@
 
 ## Usage
 
-> Some usage instructions
+> Before starting ensure you have MongoDB. In your terminal run npm install. Run npm run start in your teminal to start your server. Run npm run seed to seed database with mock data.
 
 
 ## Requirements
