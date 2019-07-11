@@ -2,8 +2,10 @@ const express = require('express');
 const app = express();
 const port = 3002;
 const {db, Reviews} = require('./db');
+const bodyParser = require('body-parser');
 
-app.get('/', (req, res) => res.send('YUP'));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.get('/reviews', (req, res) => {
   Reviews.find()
@@ -21,27 +23,5 @@ app.post('/reviews', (req, res) => {
     }
   });
 });
-
-app.listen(port, () => console.log(`Listening on port ${port}`));
-
-
-const express = require('express');
-const app = express();
-const port = 3002;
-const bodyParser = require('body-parser');
-const {db, Reviews} = require('./db');
-
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-
-app.get('/', (req, res) => res.send('YUP'));//TODO: server static files
-
-app.get('/reviews', (req, res) => {
-  Reviews.find()
-    .then((data) => res.send(data))
-    .catch((err) => res.status(500).send('Error on our side'));
-});
-
-
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
