@@ -14,7 +14,6 @@ var makeReview = function () {
   };
 };
 
-// drop database
 var seedDB = function() {
   db.collections['reviews'].drop(() => {
     console.log('reviews db dropped');
@@ -32,8 +31,6 @@ var seedDB = function() {
     }
   });
 };
-
-// seedDB(); //commented out to see if running test would stop from seeding DB.
 
 module.exports = {
   makeReview, seedDB // commmenter out to see why jest was running seedDB
