@@ -3,6 +3,12 @@ const app = express();
 const port = 3002;
 const {db, Reviews} = require('./db');
 const bodyParser = require('body-parser');
+<<<<<<< HEAD
+=======
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+>>>>>>> 41095ee1ef2068a38dc555b2ce4122cf6ae9796d
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
