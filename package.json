@@ -7,7 +7,7 @@
   "description": "> Project description",
   "main": "./server/index.js",
   "scripts": {
-    "seed": "node ./server/seeder.js",
+    "seed": "node ./server/seed.js",
     "server:dev": "nodemon --watch server",
     "start": "node server",
     "test": "jest --detectOpenHandles"
