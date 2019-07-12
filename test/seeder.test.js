@@ -28,20 +28,14 @@ describe('Review Maker', () => {
 
 });
 
-// describe('seedDB', () => {
+describe('seedDB', () => {
 
-//   var documents;
+  beforeAll(async () => {
+    await seedDB();
+  });
 
-//   beforeAll(async () => {
-//     await seedDB();
-//     await db.Reviews.find()
-//       .then((reviews) => {
-//         documents = reviews;
-//       });
-//   });
-
-//   test('DB should have 100 documents', () => {
-//     expect(documents.length).toBe(100);
-//   });
-
-// });
+  test('DB should have 100 documents', () => {
+    db.collection('reviews').find()
+      .then(result => expect(result.length).toEqual(100));
+  });
+});
