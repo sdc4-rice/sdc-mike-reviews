@@ -7,7 +7,6 @@
   "description": "> Project description",
   "main": "./server/index.js",
   "scripts": {
-    "build:dev": "./node_modules/.bin/babel client --out-dir public --presets @babel/preset-react --source-maps inline --watch",
     "react:dev": "webpack -d --watch",
     "seed": "node ./server/seed.js",
     "server:dev": "nodemon --watch server",
