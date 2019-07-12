@@ -25,7 +25,7 @@ describe('GET /reviews', () => {
 
 describe('POST /reviews', () => {
 
-  test('Post responds with updated review', (done) => {
+  test('Post responds with review saved to DB', (done) => {
     let review = makeReview();
     request('http://localhost:3002')
       .post('/reviews')
