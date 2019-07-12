@@ -25,7 +25,7 @@ var seedDB = function() {
         if (error) {
           console.log('Document was not saved to DB');
         } else {
-          console.log(`${document} was saved to DB`); //TODO: log only total amount of saves
+          console.log(`${document} was saved to DB`);
         }
       });
     }
