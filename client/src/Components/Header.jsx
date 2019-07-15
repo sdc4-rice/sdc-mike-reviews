@@ -1,9 +1,10 @@
 import React from 'react';
+import '../Styles/header.css';
 
 var Header = function () {
   return (
     <div id="header">
-      <h1>Ratings & Reviews</h1>
+      <h2>Ratings & Reviews</h2>
       <button>Write a review</button>
     </div>
   );
