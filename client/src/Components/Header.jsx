@@ -2,7 +2,7 @@ import React from 'react';
 
 var Header = function () {
   return (
-    <div>
+    <div id="header">
       <h1>Ratings & Reviews</h1>
       <button>Write a review</button>
     </div>
