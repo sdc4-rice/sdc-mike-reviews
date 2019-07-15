@@ -1,5 +1,7 @@
 import React from 'react';
 import Header from './header.jsx';
+import Ratings from './Ratings.jsx';
+import Reviews from './Reviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,15 +14,9 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <div id="header">
-          <Header />
-        </div>
-        <div id="ratings">
-
-        </div>
-        <div id="reviews">
-
-        </div>
+        <Header />
+        <Ratings />
+        <Reviews />
       </div>
     );
   }
