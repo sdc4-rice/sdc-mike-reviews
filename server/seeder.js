@@ -1,5 +1,5 @@
 const faker = require('faker');
-const {db, Reviews} = require('./db.js'); // commented out to stop jest from running full code
+const {db, Reviews} = require('./db.js');
 
 var makeReview = function () {
   return {
@@ -14,7 +14,6 @@ var makeReview = function () {
   };
 };
 
-// drop database
 var seedDB = function() {
   db.collections['reviews'].drop(() => {
     console.log('reviews db dropped');
@@ -26,15 +25,13 @@ var seedDB = function() {
         if (error) {
           console.log('Document was not saved to DB');
         } else {
-          console.log(`${document} was saved to DB`); //TODO: log only total amount of saves
+          console.log(`${document} was saved to DB`);
         }
       });
     }
   });
 };
 
-// seedDB(); //commented out to see if running test would stop from seeding DB.
-
 module.exports = {
-  makeReview, seedDB // commmenter out to see why jest was running seedDB
+  makeReview, seedDB
 };

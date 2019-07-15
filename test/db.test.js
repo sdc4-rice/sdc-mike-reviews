@@ -20,5 +20,6 @@ describe('insert', () => {
     await reviews.insertOne(mockReview);
     const insertedReview = await reviews.findOne(mockReview);
     expect(insertedReview).toEqual(mockReview);
-  })
-})
+  });
+
+});
