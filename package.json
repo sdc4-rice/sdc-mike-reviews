@@ -28,9 +28,11 @@
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.0.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^24.8.0",
     "nodemon": "^1.19.1",
+    "style-loader": "^0.23.1",
     "supertest": "^4.0.2",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5"
