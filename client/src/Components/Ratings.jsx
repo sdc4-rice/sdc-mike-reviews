@@ -1,22 +1,23 @@
 import React from 'react';
+import style from '../Styles/ratings.css';
 
 class Ratings extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-  //   };
-  // }
+    };
+  }
 
   render() {
     return (
       <div id="ratings">
-        <div id="number_rating">
+        <span id="number_rating">
           <h1 id="number">5.0</h1>
           <div id="stars">*****</div>
           <div id="count">X product ratings</div>
-        </div>
-        <div id="rating_bars">
+        </span>
+        <span id="rating_bars">
           <div id="bar_one">
             * 5 ----------- 0
           </div>
@@ -32,10 +33,10 @@ class Ratings extends React.Component {
           <div id="bar_one">
             * 1 ----------- 0
           </div>
-        </div>
-        <div id="rating_charts">
+        </span>
+        <span id="rating_charts">
           <div id="chart1">
-            ()<div id="category">Would recomend</div>
+            ()<div id="category">Would recommend</div>
           </div>
           <div id="chart2">
             ()<div id="category">Good quality</div>
@@ -43,7 +44,7 @@ class Ratings extends React.Component {
           <div id="chart3">
             ()<div id="category">Great value</div>
           </div>
-        </div>
+        </span>
       </div>
     );
   }
