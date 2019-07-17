@@ -1,0 +1,39 @@
+#header {
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  line-height: 13px;
+  border-bottom: 1px solid #c2c1c3;
+  margin: 0 0 20px 0;
+  padding: 0 0 60px 0;
+  display: block
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 26px;
+  height: 25px;
+  width: 199.609px;
+  float: left;
+  display: block;
+}
+
+button {
+  font-size: 14px;
+  line-height: 10px;
+  text-decoration: none solid rgb(6, 84, 186);
+  color: #0654BA;
+  border: 1px solid #AAAAAA;
+  margin: 12px 0 0 0;
+  padding: 7px 17px 7px 17px;
+  text-align: center;
+  white-space: nowrap;
+  word-spacing: 0px;
+  background-color: #FAFAFA;
+  float: right;
+  display: block;
+  border-radius: 3px;
+}
+
+button:hover {
+  border: 1px solid black;
+}
