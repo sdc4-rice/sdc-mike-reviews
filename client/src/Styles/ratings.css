@@ -1,7 +1,15 @@
 #ratings {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
   border-bottom: 1px solid #c2c1c3;
+  height: 140.008px;
+  display: block;
+}
+
+#ratings_box {
+  /* display: inline;
+  clear: both; */
+  /* overflow: auto; */
 }
 
 
@@ -14,7 +22,7 @@
   line-height: 13px;
   margin: 0 55px 0 0;
   float: left;
-
+  /* position: absolute; */
 }
 
 #number {
@@ -46,11 +54,11 @@
 #rating_bars {
   line-height: 13px;
   float: left;
+  /* position: absolute; */
   width: 230px;
   height: 116.25;
   padding: 0 0 20px 0;
   max-width: 230px;
-
 }
 
 
@@ -58,6 +66,7 @@
 
 #rating_charts {
   float: left;
+  /* position: absolute; */
   width: 230px;
   height: 116.25;
 }
