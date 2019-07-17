@@ -12,7 +12,6 @@ class App extends React.Component {
     };
   }
 
-
   componentDidMount() {
     fetch(`/reviews/${this.state.urlId}`)
       .then((data) => data.json())
