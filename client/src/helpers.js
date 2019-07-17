@@ -13,7 +13,7 @@ const starPercents = (reviews) => {
   return percents;
 };
 
-var formatMonth = function (month) {
+const formatMonth = function (month) {
   const months = {
     '01': 'Jan',
     '02': 'Feb',
@@ -32,10 +32,9 @@ var formatMonth = function (month) {
 };
 
 var formatDate = function (date) {
-  console.log('*****', date);
-  var month = formatMonth(date.substring(5, 7));
-  var day = date.substring(8, 10);
-  var year = date.substring(0, 4);
+  const month = formatMonth(date.substring(5, 7));
+  const day = date.substring(8, 10);
+  const year = date.substring(0, 4);
   return `${month} ${day}, ${year}`;
 };
 
