@@ -8,8 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       urlId: window.location.href.substring(26) || 1,
-      reviews: [],
-      mostPopular: []
+      reviews: []
     };
   }
 
