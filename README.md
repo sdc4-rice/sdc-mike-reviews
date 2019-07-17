@@ -16,7 +16,15 @@
 
 ## Usage
 
-> Before starting ensure you have MongoDB. In your terminal run npm install. Run npm run start in your teminal to start your server. Run npm run seed to seed database with mock data.
+1. Before starting ensure you have MongoDB.
+2. In your terminal run npm install to install dependencies.
+3. Run npm run start in your teminal to start your server.
+4. Run npm run seed to seed database with mock data.
+5. In your root directory create an .env file with the port
+
+< PORT=3002
+
+
 
 
 ## Requirements
