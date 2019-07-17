@@ -9,8 +9,9 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
-app.get('/reviews', (req, res) => {
-  Reviews.find()
+app.get('/reviews/:id', (req, res) => {
+  const productId = req.params.id;
+  Reviews.find({productId: productId})
     .then((data) => res.send(data))
     .catch((err) => res.status(500).send('Error on our side'));
 });
