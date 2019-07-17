@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
-const port = 3002;
+// const port = 3002;
 const {db, Reviews} = require('./db');
 const bodyParser = require('body-parser');
+require('dotenv').config();
+
+const port = process.env.PORT;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
