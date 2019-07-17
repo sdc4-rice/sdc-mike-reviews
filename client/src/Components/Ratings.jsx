@@ -2,32 +2,23 @@ import React from 'react';
 import style from '../Styles/ratings.css';
 import StarRatingComponent from 'react-star-rating-component';
 import RatingsBar from './RatingsBar.jsx';
+import { calculateRating } from '../helpers.js';
 
 class Ratings extends React.Component {
-
-  calculateRating() {
-    let total = 0;
-    for (let i = 0; i < this.props.reviews.length; i++) {
-      let rating = this.props.reviews[i].rating;
-      total += rating;
-    }
-    total = total / (this.props.reviews.length + 1);
-    return total.toFixed(1);
-  }
 
   render() {
     return (
       <div id="ratings">
         <div id="ratings_box">
           <div id="number_rating">
-            <h1 id="number">{this.calculateRating()}</h1>
+            <h1 id="number">{calculateRating(this.props.reviews)}</h1>
             <div id="stars">
               <StarRatingComponent
                 name="rate2"
                 editing={false}
                 renderStarIcon={() => <span>★</span>}
                 starCount={5}
-                value={Math.floor(this.calculateRating())}
+                value={Math.floor(calculateRating(this.props.reviews))}
                 emptyStarColor={'#DDDDDD'}
               />
             </div>
