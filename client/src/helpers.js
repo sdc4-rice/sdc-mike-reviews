@@ -1,13 +1,14 @@
 const starPercents = (reviews) => {
   let percents = {
-    total: reviews.length + 1
+    total: reviews.length,
+    '1': 0,
+    '2': 0,
+    '3': 0,
+    '4': 0,
+    '5': 0
   };
   for (let i = 0; i < reviews.length; i++) {
-    if (percents[reviews[i].rating] === undefined) {
-      percents[reviews[i].rating] = 1;
-    } else {
-      percents[reviews[i].rating]++;
-    }
+    percents[reviews[i].rating]++;
   }
   return percents;
 };
