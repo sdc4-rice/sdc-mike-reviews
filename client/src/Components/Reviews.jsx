@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../Styles/reviews.css';
 import StarRatingComponent from 'react-star-rating-component';
+import { formatDate } from '../helpers.js';
 
 
 class Reviews extends React.Component {
@@ -30,8 +31,8 @@ class Reviews extends React.Component {
                     emptyStarColor={'#DDDDDD'}
                   />
                 </div>
-                <div id="users_author">{review.author}</div>
-                <div id="users_date">{review.date}</div>
+                <div id="users_author">by <a id="link" href="">{review.author}</a></div>
+                <div id="users_date">{formatDate(review.date)}</div>
               </div>
               <div className="reviews">
                 <div id="review_title">{review.review.title}</div>
