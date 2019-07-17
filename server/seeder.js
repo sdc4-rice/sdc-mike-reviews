@@ -1,11 +1,11 @@
 const faker = require('faker');
 const {db, Reviews} = require('./db.js');
 
-var randomNum = function() {
+const randomNum = function() {
   return Math.floor((Math.random() * 100) + 1);
 };
 
-var makeReview = function () {
+const makeReview = function () {
   return {
     productId: randomNum(),
     author: faker.internet.userName(),
@@ -19,13 +19,13 @@ var makeReview = function () {
   };
 };
 
-var seedDB = function() {
+const seedDB = function() {
   db.collections['reviews'].drop(() => {
     console.log('reviews db dropped');
 
-    for (var i = 0; i < 700; i++) {
+    for (let i = 0; i < 700; i++) {
 
-      var reviews2 = new Reviews(makeReview());
+      let reviews2 = new Reviews(makeReview());
       reviews2.save((error, document, rows) => {
         if (error) {
           console.log('Document was not saved to DB');
