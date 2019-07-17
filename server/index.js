@@ -17,7 +17,7 @@ app.get('/reviews/:id', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-  var newReview = new Reviews(req.body);
+  let newReview = new Reviews(req.body);
   newReview.save((error, document, rows) => {
     if (error) {
       res.status(500).send('Error on the serverside');
