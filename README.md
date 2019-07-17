@@ -18,8 +18,9 @@
 
 1. Before starting ensure you have MongoDB.
 2. In your terminal run npm install to install dependencies.
-3. Run npm run start in your teminal to start your server.
-4. Run npm run seed to seed database with mock data.
+3. Run npm run seed to seed database with mock data.
+4. Run npm run start in your teminal to start your server.
+5. Run npm run react:dev to run webpack.
 5. In your root directory create an .env file with config recommendations.
 
 < Recommended settings bellow
