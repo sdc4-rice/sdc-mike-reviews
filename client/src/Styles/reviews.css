@@ -3,8 +3,6 @@ h3 {
   font-size: 17px;
 }
 
-
-
 /* each review */
 #each_review {
   font: Helvetica, Verdana, sans-serif;
@@ -24,7 +22,6 @@ h3 {
 .users {
   width:213px;
   float: left;
-  /* display: inline-block; */
   position: relative;
 }
 
