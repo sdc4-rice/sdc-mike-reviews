@@ -1,0 +1,58 @@
+/* reviews */
+h3 {
+  font-size: 17px;
+}
+
+
+
+/* each review */
+#each_review {
+  height: 120.172px;
+  width: 1124.11px;
+  margin: 20px 0 0 0;
+  padding: 10px 10px 10px 10px;
+  position: relative;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  display: inline-block
+}
+
+/* user */
+.users {
+  width:213px;
+  float: left;
+  /* display: inline-block; */
+  position: relative;
+}
+
+#users_rating {
+  font-size: 12px;
+  text-align: center;
+}
+
+#users_author {
+  font-size: 12px;
+  text-align: center;
+}
+
+#users_date {
+  font-size: 12px;
+  text-align: center;
+}
+
+/* review */
+.reviews {
+  width: 600px;
+  float: left;
+  position: relative;
+}
+
+#review_title {
+  font-size: 20px;
+}
+
+#review {
+  font-size: 13px;
+}
