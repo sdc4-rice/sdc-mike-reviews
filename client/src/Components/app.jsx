@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/reviews/${this.state.urlId}`)
+    fetch(`http://localhost:3002/reviews/${this.state.urlId}`)
       .then((data) => data.json())
       .then((results) => {
         this.setState({reviews: results});
