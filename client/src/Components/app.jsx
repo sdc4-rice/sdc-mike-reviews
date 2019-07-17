@@ -7,14 +7,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: []
+      urlId: window.location.href.substring(26) || 1,
+      reviews: [],
+      mostPopular: []
     };
   }
 
+
   componentDidMount() {
-    fetch('http://localhost:3002/reviews')
+    fetch(`http://localhost:3002/reviews/${this.state.urlId}`)
       .then((data) => data.json())
-      .then((results) => this.setState({reviews: results}))
+      .then((results) => {
+        this.setState({reviews: results});
+        return results;
+      })
       .catch((err) => console.log('There was an error'));
   }
 
@@ -23,7 +29,7 @@ class App extends React.Component {
       <div id="app">
         <Header />
         <Ratings reviews={this.state.reviews}/>
-        <Reviews />
+        <Reviews reviews={this.state.reviews}/>
       </div>
     );
   }
