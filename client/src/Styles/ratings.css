@@ -36,7 +36,9 @@
 }
 
 #stars {
-  text-align: center
+  text-align: center;
+  font-size: 20px;
+  margin: 0 0 5px 0;
 }
 
 #count {
