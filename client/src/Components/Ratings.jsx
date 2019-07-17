@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../Styles/ratings.css';
 import StarRatingComponent from 'react-star-rating-component';
+import RatingsBar from './RatingsBar.jsx';
 
 class Ratings extends React.Component {
 
@@ -33,32 +34,7 @@ class Ratings extends React.Component {
             <div id="count">{this.props.reviews.length} product ratings</div>
           </div>
           <div id="rating_bars">
-            <div id="bar_one">
-              * 5 ----------- 0
-            </div>
-            <div id="bar_one">
-              * 4 ----------- 0
-            </div>
-            <div id="bar_one">
-              * 3 ----------- 0
-            </div>
-            <div id="bar_one">
-              * 2 ----------- 0
-            </div>
-            <div id="bar_one">
-              * 1 ----------- 0
-            </div>
-          </div>
-          <div id="rating_charts">
-            <div id="chart1">
-              ()<div id="category">Would recommend</div>
-            </div>
-            <div id="chart2">
-              ()<div id="category">Good quality</div>
-            </div>
-            <div id="chart3">
-              ()<div id="category">Great value</div>
-            </div>
+            <RatingsBar reviews={this.props.reviews} />
           </div>
         </div>
       </div>
