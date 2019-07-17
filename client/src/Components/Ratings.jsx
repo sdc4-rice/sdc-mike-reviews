@@ -1,5 +1,6 @@
 import React from 'react';
 import style from '../Styles/ratings.css';
+import StarRatingComponent from 'react-star-rating-component';
 
 class Ratings extends React.Component {
 
@@ -10,7 +11,7 @@ class Ratings extends React.Component {
       total += rating;
     }
     total = total / (this.props.reviews.length + 1);
-    return Math.floor(total);
+    return total.toFixed(1);
   }
 
   render() {
@@ -19,7 +20,16 @@ class Ratings extends React.Component {
         <div id="ratings_box">
           <div id="number_rating">
             <h1 id="number">{this.calculateRating()}</h1>
-            <div id="stars">*****</div>
+            <div id="stars">
+              <StarRatingComponent
+                name="rate2"
+                editing={false}
+                renderStarIcon={() => <span>★</span>}
+                starCount={5}
+                value={Math.floor(this.calculateRating())}
+                emptyStarColor={'#DDDDDD'}
+              />
+            </div>
             <div id="count">{this.props.reviews.length} product ratings</div>
           </div>
           <div id="rating_bars">
