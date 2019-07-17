@@ -31,14 +31,34 @@ const formatMonth = function (month) {
   return months[month];
 };
 
-var formatDate = function (date) {
+const formatDate = function (date) {
   const month = formatMonth(date.substring(5, 7));
   const day = date.substring(8, 10);
   const year = date.substring(0, 4);
   return `${month} ${day}, ${year}`;
 };
 
+const calculateRating = function(reviews) {
+  let rating = 0;
+  let percents = {
+    '1': 0,
+    '2': 0,
+    '3': 0,
+    '4': 0,
+    '5': 0
+  };
+
+  for (let i = 0; i < reviews.length; i++) {
+    percents[reviews[i].rating]++;
+  }
+
+  rating = (5 * percents['5'] + 4 * percents['4'] + 3 * percents['3'] + 2 * percents[2] + 1 * percents[1]) /
+            (percents['5'] + percents['4'] + percents['3'] + percents[2] + percents[1]);
+  return rating.toFixed(1);
+};
+
 module.exports = {
   starPercents,
-  formatDate
+  formatDate,
+  calculateRating
 };
