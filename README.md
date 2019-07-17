@@ -20,9 +20,12 @@
 2. In your terminal run npm install to install dependencies.
 3. Run npm run start in your teminal to start your server.
 4. Run npm run seed to seed database with mock data.
-5. In your root directory create an .env file with the port
+5. In your root directory create an .env file with config recommendations.
 
-< PORT=3002
+< Recommended settings bellow
+  PORT=3002
+  START_ID=100
+  END_ID=200
 
 
 

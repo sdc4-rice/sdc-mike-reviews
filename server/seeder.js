@@ -1,13 +1,10 @@
 const faker = require('faker');
 const {db, Reviews} = require('./db.js');
-
-const randomNum = function() {
-  return Math.floor((Math.random() * 100) + 1);
-};
+require('dotenv').config();
 
 const makeReview = function () {
   return {
-    productId: randomNum(),
+    productId: faker.random.number({min: Number(process.env.START_ID), max: Number(process.env.END_ID)}),
     author: faker.internet.userName(),
     rating: Math.floor(Math.random() * 5 + 1),
     date: faker.date.past(),
