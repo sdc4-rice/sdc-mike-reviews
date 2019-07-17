@@ -3,7 +3,6 @@ const starPercents = (reviews) => {
     total: reviews.length + 1
   };
   for (let i = 0; i < reviews.length; i++) {
-    console.log(reviews[i]);
     if (percents[reviews[i].rating] === undefined) {
       percents[reviews[i].rating] = 1;
     } else {
