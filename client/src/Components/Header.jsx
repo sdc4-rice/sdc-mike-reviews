@@ -7,7 +7,9 @@ var Header = function () {
       <div id="h2Title">
         <h2>Ratings & Reviews</h2>
       </div>
-      <button>Write a review</button>
+      <div>
+        <button id='button'>Write a review</button>
+      </div>
     </div>
   );
 };
