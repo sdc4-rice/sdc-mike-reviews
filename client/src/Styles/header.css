@@ -20,7 +20,7 @@ h2 {
   display: block;
 }
 
-button {
+#button {
   font-size: 14px;
   line-height: 10px;
   text-decoration: none solid rgb(6, 84, 186);
@@ -37,6 +37,6 @@ button {
   border-radius: 3px;
 }
 
-button:hover {
+#button:hover {
   border: 1px solid black;
 }
