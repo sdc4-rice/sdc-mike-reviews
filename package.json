@@ -31,7 +31,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.0.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "jest": "^24.8.0",
     "nodemon": "^1.19.1",
     "style-loader": "^0.23.1",
@@ -43,10 +43,13 @@
     "type": "git",
     "url": "git+https://github.com/fec4-gandolf/Napoleon-Service.git"
   },
-  "author": "",
+  "author": "Napoleon De La Pena",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fec4-gandolf/Napoleon-Service/issues"
   },
-  "homepage": "https://github.com/fec4-gandolf/Napoleon-Service#readme"
+  "homepage": "https://github.com/fec4-gandolf/Napoleon-Service#readme",
+  "directories": {
+    "test": "test"
+  }
 }
