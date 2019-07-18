@@ -47,7 +47,7 @@ h3 {
   font: Helvetica, Verdana, sans-serif;
   width: 600px;
   float: left;
-  position: relative;
+  /* position: relative; */
 }
 
 #review_title {
