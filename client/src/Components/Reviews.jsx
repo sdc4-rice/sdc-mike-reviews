@@ -17,7 +17,7 @@ class Reviews extends React.Component {
     return (
       <div id="reviews">
         <div className="review">
-          <h3>Most relevant reviews</h3>
+          <h3 id="h3Title">Most relevant reviews</h3>
           {this.props.reviews.map((review, index) =>
             <div id="each_review"key ={index}>
               <div className="users">
