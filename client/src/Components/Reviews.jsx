@@ -8,9 +8,39 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      load: false,
       mostPopular: [],
       allReviews: [],
     };
+    this.vote = this.vote.bind(this);
+  }
+
+  vote(e) {
+    this.setState({load: true}, () => {
+      const data = {
+        vote: e.target.id,
+        _id: e.target.className,
+        popularity: e.target.name
+      };
+      fetch('http://localhost:3002/reviews', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      })
+        .then((review) => review.json())
+        // .then((review) => {
+        //   this.setState({reviews: results});
+        //   return results;
+        // })
+        .then((review) => {
+          this.setState({load: false});
+          return review;
+        })
+        .then((review) => console.log(review))
+        .catch((err) => console.log('There was an error'));
+    });
   }
 
   render() {
@@ -35,8 +65,14 @@ class Reviews extends React.Component {
                 <div id="users_date">{formatDate(review.date)}</div>
               </div>
               <div className="reviews">
-                <div id="review_title">{review.review.title}</div>
-                <div id="review">{review.review.review}</div>
+                <div id="inner">
+                  <div id="review_title">{review.review.title}</div>
+                  <div id="review">{review.review.review}</div>
+                  <div id="vote_buttons">
+                    <button id="upvote" onClick={this.vote} className={review._id} name={review.popularity}>👍</button>
+                    <button id="downvote" onClick={this.vote} className={review._id} name={review.popularity}>👎</button>
+                  </div>
+                </div>
               </div>
             </div>
           )}
