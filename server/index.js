@@ -31,4 +31,27 @@ app.post('/reviews', (req, res) => {
   });
 });
 
+app.put('/reviews', (req, res) => {
+  let query = {_id: req.body._id};
+  let vote = req.body.vote;
+
+  Reviews.findOne(query)
+    .then((review) => Number(review.popularity))
+    .then((popularity) => {
+      if (vote === 'upvote') {
+        popularity++;
+        return popularity;
+      } else if (vote === 'downvote') {
+        popularity--;
+        return popularity--;
+      }
+    })
+    .then((newPopularity) => Reviews.findOneAndUpdate(query, {$set: {popularity: newPopularity}}, {new: true}))
+    .then((updatedReview) => {
+      res.send(updatedReview);
+      return updatedReview;
+    })
+    .catch(err => console.log('there was an err finding in db'));
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
