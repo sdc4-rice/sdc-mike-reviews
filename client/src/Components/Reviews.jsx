@@ -52,7 +52,7 @@ class Reviews extends React.Component {
               <h3 id="h3Title">Most relevant reviews</h3>
             </div>
             <div>
-              <h4 id="more_reviews"><a id="link" href="">See all reviews</a></h4>
+              <h4 id="more_reviews"><a id="more_reviews_link" href="">See all reviews</a></h4>
             </div>
           </div>
           {this.props.reviews.map((review, index) =>
@@ -68,7 +68,7 @@ class Reviews extends React.Component {
                     emptyStarColor={'#DDDDDD'}
                   />
                 </div>
-                <div id="users_author">by <a id="link" href="">{review.author}</a></div>
+                <div id="users_author">by <a id="author_link" href="">{review.author}</a></div>
                 <div id="users_date">{formatDate(review.date)}</div>
               </div>
               <div className="reviews">
