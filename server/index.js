@@ -40,11 +40,10 @@ app.put('/reviews', (req, res) => {
     .then((popularity) => {
       if (vote === 'upvote') {
         popularity++;
-        return popularity;
       } else if (vote === 'downvote') {
         popularity--;
-        return popularity--;
       }
+      return popularity;
     })
     .then((newPopularity) => Reviews.findOneAndUpdate(query, {$set: {popularity: newPopularity}}, {new: true}))
     .then((updatedReview) => {
