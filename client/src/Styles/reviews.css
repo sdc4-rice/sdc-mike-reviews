@@ -59,9 +59,21 @@ h3 {
   font-size: 13px;
 }
 
-#link {
+#more_reviews_link {
+  text-decoration: none;
   color:#0654BA
 }
+
+#more_reviews_link:hover {
+  text-decoration: underline;
+}
+
+#author_link {
+  text-decoration: none;
+  color:#0654BA
+
+}
+
 
 #upvote {
   color: transparent;
@@ -95,7 +107,6 @@ h3 {
 
 #more_reviews {
   font-weight: 420;
-  text-decoration: underline;
   float: right;
   font-size: 13px;
   color: #0654BA;
