@@ -92,3 +92,25 @@ h3 {
   margin: 10%;
   font-size: 100%
 }
+
+#more_reviews {
+  font-weight: 420;
+  text-decoration: underline;
+  float: right;
+  font-size: 13px;
+  color: #0654BA;
+  margin: 0 20px 0 0
+}
+
+#review_header {
+  position: relative;
+  line-height: 13px;
+  display: block
+}
+
+#h3Title {
+  margin: 30px 0 0 0;
+  position: relative;
+  display: flex;
+  width:50%
+}
