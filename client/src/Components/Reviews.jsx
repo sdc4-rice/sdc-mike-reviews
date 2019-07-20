@@ -31,15 +31,10 @@ class Reviews extends React.Component {
         body: JSON.stringify(data)
       })
         .then((review) => review.json())
-        // .then((review) => {
-        //   this.setState({reviews: results});
-        //   return results;
-        // })
         .then((review) => {
           this.setState({load: false, voted: review});
           return review;
         })
-        .then((review) => console.log(review))
         .catch((err) => console.log('There was an error'));
     });
   }
