@@ -1,6 +1,7 @@
 import React from 'react';
 import StarRatingComponent from 'react-star-rating-component';
 import { formatDate } from '../helpers.js';
+import Vote from './Vote.jsx';
 
 class Review extends React.Component {
   constructor(props) {
@@ -37,10 +38,7 @@ class Review extends React.Component {
                 <div id="inner">
                   <div id="review_title">{review.review.title}</div>
                   <div id="review">{review.review.review}</div>
-                  <div id="vote_buttons">
-                    <button id="upvote" onClick={this.props.vote} className={review._id} name="upvote">👍</button>
-                    <button id="downvote" onClick={this.props.vote} className={review._id} name="downvote">👎</button>
-                  </div>
+                  <Vote _id={review._id} vote={this.props.vote}/>
                 </div>
               </div>
             </div>
