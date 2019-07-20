@@ -77,7 +77,7 @@ class Reviews extends React.Component {
                 <h3 id="h3Title">Most relevant reviews</h3>
               </div>
               <div>
-                <h4 id="more_reviews" onClick={this.reviewLoadCount}><a id="more_reviews_link" href="">See more reviews</a></h4>
+                <h4 id="more_reviews" onClick={this.reviewLoadCount}><a id="more_reviews_link" href="">Show all  {this.props.reviews.length} reviews</a></h4>
               </div>
             </div>
             <Review vote={this.vote} reviews={this.props.reviews.slice(0, 5)}/>
