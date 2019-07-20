@@ -16,11 +16,11 @@ class Reviews extends React.Component {
   }
 
   vote(e) {
+    e.persist();
     this.setState({load: true}, () => {
       const data = {
-        vote: e.target.id,
+        vote: e.target.name,
         _id: e.target.className,
-        popularity: e.target.name
       };
       fetch('http://localhost:3002/reviews', {
         method: 'PUT',
@@ -47,7 +47,14 @@ class Reviews extends React.Component {
     return (
       <div id="reviews">
         <div className="review">
-          <h3 id="h3Title">Most relevant reviews</h3>
+          <div id="review_header">
+            <div>
+              <h3 id="h3Title">Most relevant reviews</h3>
+            </div>
+            <div>
+              <h4 id="more_reviews"><a id="link" href="">See all reviews</a></h4>
+            </div>
+          </div>
           {this.props.reviews.map((review, index) =>
             <div id="each_review"key ={index}>
               <div className="users">
@@ -69,8 +76,8 @@ class Reviews extends React.Component {
                   <div id="review_title">{review.review.title}</div>
                   <div id="review">{review.review.review}</div>
                   <div id="vote_buttons">
-                    <button id="upvote" onClick={this.vote} className={review._id} name={review.popularity}>👍</button>
-                    <button id="downvote" onClick={this.vote} className={review._id} name={review.popularity}>👎</button>
+                    <button id="upvote" onClick={this.vote} className={review._id} name="upvote">👍</button>
+                    <button id="downvote" onClick={this.vote} className={review._id} name="downvote">👎</button>
                   </div>
                 </div>
               </div>
