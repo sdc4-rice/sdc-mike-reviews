@@ -8,18 +8,21 @@ class App extends React.Component {
     super(props);
     this.state = {
       urlId: window.location.href.substring(26) || 1,
-      reviews: []
+      reviews: [],
+      load: false
     };
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3002/reviews/${this.state.urlId}`)
+    this.setState({load: true }, () => { 
+      fetch(`http://localhost:3002/reviews/${this.state.urlId}`)
       .then((data) => data.json())
       .then((results) => {
-        this.setState({reviews: results});
+        this.setState({reviews: results, load: false});
         return results;
       })
       .catch((err) => console.log('There was an error'));
+      });
   }
 
   render() {
