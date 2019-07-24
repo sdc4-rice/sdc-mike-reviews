@@ -57,7 +57,7 @@ app.delete('/delete/reviews',(req, res) => {
   let query = {_id: req.body._id};
   Reviews.remove(query)
     .then(data => res.send('Successfully deleted!'))
-    .catch(err => console.log('Error deleting review'))
+    .catch(err => console.log('Error deleting review:', err))
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
