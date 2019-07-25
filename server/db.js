@@ -26,7 +26,8 @@ const Sequelize = require('sequelize');
 // const sequelize = new Sequelize('postgres://postgres@localhost:5432/reviews');
 const sequelize = new Sequelize('reviews', 'postgres', '', {
   host: 'localhost',
-  dialect: 'postgres'
+  dialect: 'postgres',
+  logging: false
 });
 
 class Review extends Sequelize.Model{}
