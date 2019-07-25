@@ -1,5 +1,5 @@
 const faker = require('faker');
-const {db, Reviews} = require('./db.js');
+const {sequelize, Review} = require('./db.js');
 require('dotenv').config();
 
 const makeReview = function () {
@@ -16,22 +16,17 @@ const makeReview = function () {
   };
 };
 
-const seedDB = function() {
-  db.collections['reviews'].drop(() => {
-    console.log('reviews db dropped');
 
-    for (let i = 0; i < 700; i++) {
-
-      let reviews2 = new Reviews(makeReview());
-      reviews2.save((error, document, rows) => {
-        if (error) {
-          console.log('Document was not saved to DB');
-        } else {
-          console.log(`${document} was saved to DB`);
-        }
-      });
+async function seedDB(start, end) {
+  var reviews = [];
+  for (let i = start; i <= end; i++) {
+    reviews.push(makeReview());
+    if (i % 50000 === 0) {
+      await Review.bulkCreate(reviews);
+      reviews = [];
     }
-  });
+  }
+  await Review.bulkCreate(reviews);
 };
 
 module.exports = {
