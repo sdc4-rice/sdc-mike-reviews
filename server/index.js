@@ -64,7 +64,7 @@ app.get('/reviews/:id', (req, res) => {
   const productid = req.params.id;
   Review.findAll({
     where: {
-      productid: productid
+      productid: productid,
     },
     benchmark: true
   })
@@ -97,17 +97,6 @@ app.put('/reviews', (req, res) => {
       return updatedReview;
     })
     .catch(err => console.log('there was an err finding in db'));
-});
-
-app.delete('/reviews/:id', (req, res) => {
-  let id = req.params.id;
-  Review.destroy({
-    where: {
-      id: id
-    }
-  })
-    .then(data => res.sendStatus(200).send(data))
-    .catch(err => console.log('Error deleting: ', err))
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
