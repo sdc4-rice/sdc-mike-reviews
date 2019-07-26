@@ -61,11 +61,12 @@ app.use(express.static('public'));
 // });
 
 app.get('/reviews/:id', (req, res) => {
-  const productId = req.params.id;
+  const productid = req.params.id;
   Review.findAll({
     where: {
-      productId: productId
-    }
+      productid: productid
+    },
+    benchmark: true
   })
     .then((data) => res.status(200).send(data).end())
     .catch((err) => console.log('Error getting reviews!'))
