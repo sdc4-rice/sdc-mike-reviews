@@ -3,9 +3,9 @@
 > A mock Ratings & Reviews component of eBay.
 ## Related Projects
 
-  - https://github.com/fec4-gandolf/Napoleon-Service
-  - https://github.com/fec4-gandolf/bid-buy
-  - https://github.com/fec4-gandolf/PeopleAlsoViewed
+  - https://github.com/sdc4-rice/sdc-mike-reviews
+  - https://github.com/sdc4-rice/willresen_bidbuy
+  - https://github.com/sdc4-rice/sdc-grant-peoplealsoviewed
   - https://github.com/fec4-gandolf/images-modal
 
 ## Table of Contents
@@ -19,7 +19,7 @@
 1. Before starting ensure you have MongoDB.
 2. In your root directory create an .env file with config recommendations.
 
-< Recommended settings bellow
+< Recommended settings below
   PORT=3002
   START_ID=100
   END_ID=200
@@ -52,3 +52,11 @@ npm install -g webpack
 npm install
 ```
 
+## API Endpoints
+
+```sh
+GET: /reviews/:id       --> retrieves all reviews for specific product
+POST: /reviews          --> add a review
+PUT: /reviews           --> updates a review
+DELETE: /reviews/:id    --> deletes a review
+```
