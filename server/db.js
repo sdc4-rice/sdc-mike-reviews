@@ -33,13 +33,13 @@ const sequelize = new Sequelize('reviews', 'postgres', '', {
 class Review extends Sequelize.Model{}
 
 Review.init({
-  productId: Sequelize.INTEGER,
+  productid: Sequelize.INTEGER,
   author: Sequelize.STRING,
   rating: Sequelize.INTEGER,
   date: Sequelize.DATEONLY,
   review: Sequelize.JSON,
   popularity: Sequelize.INTEGER
-}, { sequelize, modelName: 'Review' });
+}, { sequelize, modelName: 'review' });
 
 sequelize
   .authenticate()
