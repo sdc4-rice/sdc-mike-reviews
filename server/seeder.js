@@ -1,10 +1,10 @@
 const faker = require('faker');
-const {db, Reviews} = require('./db.js');
+const { Review } = require('./postgres.js');
 require('dotenv').config();
 
 const makeReview = function () {
   return {
-    productId: faker.random.number({min: Number(process.env.START_ID), max: Number(process.env.END_ID)}),
+    productid: faker.random.number({min: Number(process.env.START_ID), max: Number(process.env.END_ID)}),
     author: faker.internet.userName(),
     rating: Math.floor(Math.random() * 5 + 1),
     date: faker.date.past(),
@@ -16,22 +16,18 @@ const makeReview = function () {
   };
 };
 
-const seedDB = function() {
-  db.collections['reviews'].drop(() => {
-    console.log('reviews db dropped');
-
-    for (let i = 0; i < 700; i++) {
-
-      let reviews2 = new Reviews(makeReview());
-      reviews2.save((error, document, rows) => {
-        if (error) {
-          console.log('Document was not saved to DB');
-        } else {
-          console.log(`${document} was saved to DB`);
-        }
-      });
+async function seedDB(start, end) {
+  console.time('SeedTime');
+  var reviews = [];
+  for (let i = start; i <= end; i++) {
+    reviews.push(makeReview());
+    if (i % 25000 === 0) {
+      await Review.bulkCreate(reviews);
+      reviews = [];
     }
-  });
+  }
+  await Review.bulkCreate(reviews);
+  console.timeEnd('SeedTime');
 };
 
 module.exports = {
