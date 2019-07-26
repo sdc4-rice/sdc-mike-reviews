@@ -1,5 +1,5 @@
 const faker = require('faker');
-const { Review } = require('./db.js');
+const { Review } = require('./postgres.js');
 require('dotenv').config();
 
 const makeReview = function () {
