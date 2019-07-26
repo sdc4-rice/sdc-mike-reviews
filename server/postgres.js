@@ -21,9 +21,6 @@ sequelize
   .authenticate()
   .then(() => {
     console.log('Connected to db!')
-  })
-  .catch(err => {
-    console.log('Unable to connect to db:', err);
   });
 
 module.exports = {
