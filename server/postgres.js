@@ -18,7 +18,7 @@ Review.init({
 }, { sequelize, modelName: 'review' });
 
 const getReviews = (productid) => {
-  Review.findAll({
+  return Review.findAll({
     where: {
       productid: productid,
     },
@@ -27,11 +27,11 @@ const getReviews = (productid) => {
 };
 
 const postReview = (review) => {
-  Review.create(review);
+  return Review.create(review);
 }
 
 const updateReview = (query, vote) => {
-  Review.findOne(query)
+  return Review.findOne(query)
     .then((review) => Number(review.popularity))
     .then((popularity) => {
       if (vote === 'upvote') {
@@ -45,7 +45,7 @@ const updateReview = (query, vote) => {
 };
 
 const deleteReview = (query) => {
-  Reviews.remove(query);
+  return Reviews.remove(query);
 };
 
 sequelize
