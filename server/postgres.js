@@ -51,7 +51,7 @@ const deleteReview = (query) => {
 sequelize
   .authenticate()
   .then(() => {
-    console.log('Connected to db!')
+    console.log('Connected to PostgreSQL!')
   });
 
 module.exports = {
