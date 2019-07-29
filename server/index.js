@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const { Review } = require('./db');
-const bodyParser = require('body-parser');
 require('dotenv').config();
+const currentDB = process.env.DB;
+const db = require(`./${currentDB}`);
+const bodyParser = require('body-parser');
 
 const port = process.env.PORT;
 
@@ -62,18 +63,13 @@ app.use(express.static('public'));
 
 app.get('/reviews/:id', (req, res) => {
   const productid = req.params.id;
-  Review.findAll({
-    where: {
-      productid: productid,
-    },
-    benchmark: true
-  })
+  db.getReviews(productid)
     .then((data) => res.status(200).send(data).end())
     .catch((err) => console.log('Error getting reviews!'))
 });
 
 app.post('/reviews', (req, res) => {
-  Review.create(req.body)
+  db.postReview(req.body)
     .then((data) => res.status(200).send(data))
     .catch((err) => res.send('Error posting!'));
 });
@@ -81,17 +77,7 @@ app.post('/reviews', (req, res) => {
 app.put('/reviews', (req, res) => {
   let query = {id: req.body.id};
   let vote = req.body.vote;
-  Review.findOne(query)
-    .then((review) => Number(review.popularity))
-    .then((popularity) => {
-      if (vote === 'upvote') {
-        popularity++;
-      } else if (vote === 'downvote') {
-        popularity--;
-      }
-      return popularity;
-    })
-    .then((newPopularity) => Review.update(query, {$set: {popularity: newPopularity}}, {new: true}))
+  db.updateReview(query, vote)
     .then((updatedReview) => {
       res.send(updatedReview);
       return updatedReview;
@@ -101,7 +87,7 @@ app.put('/reviews', (req, res) => {
 
 app.delete('/delete/reviews',(req, res) => {
   let query = {_id: req.body._id};
-  Reviews.remove(query)
+  db.deleteReview(query)
     .then(data => res.send('Successfully deleted!'))
     .catch(err => console.log('Error deleting review:', err))
 });
