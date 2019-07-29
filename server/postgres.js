@@ -17,6 +17,37 @@ Review.init({
   popularity: Sequelize.INTEGER
 }, { sequelize, modelName: 'review' });
 
+const getReviews = (productid) => {
+  Review.findAll({
+    where: {
+      productid: productid,
+    },
+    benchmark: true
+  });
+};
+
+const postReview = (review) => {
+  Review.create(review);
+}
+
+const updateReview = (query, vote) => {
+  Review.findOne(query)
+    .then((review) => Number(review.popularity))
+    .then((popularity) => {
+      if (vote === 'upvote') {
+        popularity++;
+      } else if (vote === 'downvote') {
+        popularity--;
+      }
+      return popularity;
+    })
+    .then((newPopularity) => Review.update(query, {$set: {popularity: newPopularity}}, {new: true}));
+};
+
+const deleteReview = (query) => {
+  Reviews.remove(query);
+};
+
 sequelize
   .authenticate()
   .then(() => {
@@ -25,5 +56,9 @@ sequelize
 
 module.exports = {
   sequelize,
-  Review
+  Review,
+  getReviews,
+  postReview,
+  updateReview,
+  deleteReview
 };
