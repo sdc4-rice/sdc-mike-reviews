@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 require('dotenv').config();
 const currentDB = process.env.DB;
-const db = require(`./${currentDB}`);
+const db = require(`./${currentDB}.js`);
 const bodyParser = require('body-parser');
 
 const port = process.env.PORT;
