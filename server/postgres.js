@@ -6,7 +6,7 @@ const sequelize = new Sequelize('reviews', 'postgres', '', {
   logging: false
 });
 
-class Review extends Sequelize.Model{}
+class Review extends Sequelize.Model{};
 
 Review.init({
   productid: Sequelize.INTEGER,
@@ -28,7 +28,7 @@ const getReviews = (productid) => {
 
 const postReview = (review) => {
   return Review.create(review);
-}
+};
 
 const updateReview = (query, vote) => {
   return Review.findOne(query)
