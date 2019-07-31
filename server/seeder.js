@@ -1,6 +1,7 @@
 const faker = require('faker');
-const { Review } = require('./postgres.js');
 require('dotenv').config();
+const currentDB = process.env.DB;
+const { Review } = require(`./${currentDB}.js`);
 
 const makeReview = function () {
   return {

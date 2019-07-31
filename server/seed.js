@@ -1,5 +1,9 @@
+// NEED TO CORRECT
 const { seedDB } = require('./seeder.js');
-const { Review } = require('./postgres.js');
+require('dotenv').config();
+const currentDB = process.env.DB;
+// NEED TO CORRECT
+const { Review } = require(`./${currentDB}.js`);
 
 Review.sync({ force: true })
   .then(() => {
