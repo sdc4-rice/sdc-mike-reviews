@@ -7,14 +7,13 @@ const fs = require(`fs`);
 const filename = process.env.CSV_FILENAME;
 const path = require('path');
 
-
 // Create CSV
 const writer = fs.createWriteStream(`${filename}.csv`);
 async function makeData(stream){
+  console.time('CSV + seed')
   stream.write('productid,author,rating,date,popularity,review,title\n');
-  console.time('data');
-  let i = 1000;
-  return await write();
+  let i = 10000000;
+  await write();
   stream.on('finish', () => console.timeEnd('data'));
   async function write() {
     let ok = true;
@@ -35,7 +34,8 @@ async function makeData(stream){
       }
     } while (i > 0 && ok);
     if (i > 0) {
-      await writer.once('drain', write);
+      // return a promise that will call write
+      return new Promise((resolve, reject) => writer.once('drain', () => resolve(write())));
     }
     if (i === 0) {
       return Promise.resolve(true);
@@ -94,10 +94,12 @@ async function seedPostgres() {
   console.time('Seed');
   const query = `COPY reviews(productid, author, rating, date, popularity, review, title) FROM '${path.join(__dirname, '../')}${filename}.csv' WITH (FORMAT csv, HEADER true);`
   await db.sequelize.query(query)
-    .then(() => {
-      console.log(`Postgres is done seeding!`)
-      console.timeEnd('Seed')})
-    .catch(err => console.log(`Error seeding Postgres: ${err}`))
+    .then(async () => {
+      await console.log(`Postgres is done seeding!`)
+      await console.timeEnd('Seed')
+      await console.timeEnd('CSV + seed')
+    })
+    .catch(err => console.log(`Error seeding Postgres: ${err}`));
 };
 
 // Create CSV, drop/create table, seed db
