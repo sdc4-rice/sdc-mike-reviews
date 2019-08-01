@@ -16,13 +16,15 @@
 
 ## Usage
 
-1. Before starting ensure you have MongoDB.
+1. Before starting ensure you have PostgreSQL/Cassandra.
 2. In your root directory create an .env file with config recommendations.
 
 < Recommended settings below
-  PORT=3002
-  START_ID=100
-  END_ID=200
+PORT=3002
+START_ID=1
+END_ID=10000000
+DB=postgres
+CSV_FILENAME=reviews
 
 3. In your terminal run npm install to install dependencies.
 4. Run npm run seed to seed database with mock data.
