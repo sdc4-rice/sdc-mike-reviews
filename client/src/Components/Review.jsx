@@ -36,8 +36,8 @@ class Review extends React.Component {
               </div>
               <div className="reviews">
                 <div id="inner">
-                  <div id="review_title">{review.review.title}</div>
-                  <div id="review">{review.review.review}</div>
+                  <div id="review_title">{review.title}</div>
+                  <div id="review">{review.review}</div>
                   <Vote _id={review._id} vote={this.props.vote}/>
                 </div>
               </div>
@@ -45,6 +45,6 @@ class Review extends React.Component {
           )}
           </div>
   )}
-} 
+}
 
 export default Review
