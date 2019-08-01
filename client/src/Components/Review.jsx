@@ -18,7 +18,7 @@ class Review extends React.Component {
   render () {
     return (
     <div>
-    {this.props.reviews.map((review, index) =>
+    {this.props.reviews.map((singleReview, index) =>
             <div id="each_review"key ={index}>
               <div className="users">
                 <div id="users_rating">
@@ -27,24 +27,24 @@ class Review extends React.Component {
                     editing={false}
                     renderStarIcon={() => <span>★</span>}
                     starCount={5}
-                    value={review.rating}
+                    value={singleReview.rating}
                     emptyStarColor={'#DDDDDD'}
                   />
                 </div>
-                <div id="users_author">by <a id="author_link" href="">{review.author}</a></div>
-                <div id="users_date">{formatDate(review.date)}</div>
+                <div id="users_author">by <a id="author_link" href="">{singleReview.author}</a></div>
+                <div id="users_date">{formatDate(singleReview.date)}</div>
               </div>
               <div className="reviews">
                 <div id="inner">
-                  <div id="review_title">{review.review.title}</div>
-                  <div id="review">{review.review.review}</div>
-                  <Vote _id={review._id} vote={this.props.vote}/>
+                  <div id="review_title">{singleReview.title}</div>
+                  <div id="review">{singleReview.review}</div>
+                  <Vote _id={singleReview._id} vote={this.props.vote}/>
                 </div>
               </div>
             </div>
           )}
           </div>
   )}
-} 
+}
 
 export default Review

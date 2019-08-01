@@ -25,3 +25,6 @@ build/
 dist/
 
 .env
+
+# CSV
+*.csv
