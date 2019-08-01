@@ -8,42 +8,21 @@ const client = new cassandra.Client({
 
 const getAllReviews = () => {
   const query = `SELECT * from reviews;`
-  return new Promise ((resolve, reject) => {
-    client.execute(query, (err, data) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(data)
-      }
-    });
-  });
+  return client.execute(query)
+    .catch(err => console.log(`Error getting reviews: ${err}`));
 };
 
 const getReviews = (productid) => {
   const query = `SELECT * from reviews.reviews where productid=?;`
   const params = [productid];
-  return new Promise ((resolve, reject) => {
-    client.execute(query, params, {prepare: true}, (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(data);
-      }
-    });
-  });
+  return client.execute(query, params, {prepare: true})
+    .catch(err => console.log(`Error getting reviews: ${err}`));
 };
 
 const postReview = (review) => {
   const query = `INSERT into reviews JSON '${review}';`
-  return new Promise((resolve, reject) => {
-    client.execute(query, (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(data);
-      }
-    });
-  });
+  return client.execute(query)
+    .catch(err => console.log(`Error posting review: ${err}`));
 };
 
 const updateReview = (review, vote) => {
@@ -56,15 +35,8 @@ const updateReview = (review, vote) => {
   }
   return popularity;
   const query = `UPDATE reviews SET popularity = ${popularity} where author=${author};`
-  return new Promise((resolve, reject) => {
-    client.execute(query, (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(err);
-      }
-    });
-  });
+  return client.execute(query)
+    .catch(err => console.log(`Error updating review: ${err}`));
 };
 
 const deleteReview = (query) => {
@@ -76,4 +48,4 @@ module.exports = {
   getReviews,
   postReview,
   getAllReviews
-}
+};
