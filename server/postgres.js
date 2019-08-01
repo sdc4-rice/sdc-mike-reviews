@@ -1,9 +1,11 @@
 const Sequelize = require('sequelize');
-// const sequelize = new Sequelize('postgres://postgres@localhost:5432/reviews');
 const sequelize = new Sequelize('reviews', 'postgres', '', {
   host: 'localhost',
   dialect: 'postgres',
-  logging: false
+  define: {
+    timestamps: false
+  },
+  // logging: false
 });
 
 class Review extends Sequelize.Model{};
@@ -13,7 +15,8 @@ Review.init({
   author: Sequelize.STRING,
   rating: Sequelize.INTEGER,
   date: Sequelize.DATEONLY,
-  review: Sequelize.JSON,
+  review: Sequelize.STRING(500),
+  title: Sequelize.STRING,
   popularity: Sequelize.INTEGER
 }, { sequelize, modelName: 'review' });
 
@@ -47,12 +50,6 @@ const updateReview = (query, vote) => {
 const deleteReview = (query) => {
   return Reviews.remove(query);
 };
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connected to PostgreSQL!')
-  });
 
 module.exports = {
   sequelize,
