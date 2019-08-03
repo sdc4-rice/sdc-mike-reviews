@@ -5,7 +5,7 @@ const sequelize = new Sequelize('reviews', 'postgres', '', {
   define: {
     timestamps: false
   },
-  // logging: false
+  logging: false
 });
 
 class Review extends Sequelize.Model{};
@@ -25,7 +25,7 @@ const getReviews = (productid) => {
     where: {
       productid: productid,
     },
-    benchmark: true
+    // benchmark: true
   });
 };
 
