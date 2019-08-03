@@ -102,6 +102,15 @@ async function seedPostgres() {
     .catch(err => console.log(`Error seeding Postgres: ${err}`));
 };
 
+// Create index
+async function createIndex() {
+  const query = `CREATE INDEX idx_productid ON reviews(productid);`
+  console.time('Indexing');
+  await db.sequelize.query(query)
+    .then(async () => await console.timeEnd('Indexing'))
+    .catch(err => console.log(`Error indexing: ${err}`))
+};
+
 // Create CSV, drop/create table, seed db
 makeData(writer)
   .then(async() => {
@@ -118,4 +127,5 @@ makeData(writer)
       return await seedCassandra();
     }
   })
-  .catch(err => console.log(`Error seeding Postgres: ${err}`));
+  .then(async() => return await createIndex())
+  .catch(err => console.log(`Error seeding: ${err}`));
