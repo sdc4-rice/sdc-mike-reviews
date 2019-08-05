@@ -12,7 +12,7 @@ const writer = fs.createWriteStream(`${filename}.csv`);
 async function makeData(stream){
   console.time('CSV + seed')
   stream.write('productid,author,rating,date,popularity,review,title\n');
-  let i = 10000000;
+  let i = 1000;
   await write();
   stream.on('finish', () => console.timeEnd('data'));
   async function write() {
@@ -43,35 +43,7 @@ async function makeData(stream){
   }
 }
 
-// Drop/create table
-
-async function dropCassandraTable() {
-  const query = `drop table reviews;`
-  await db.client.execute(query)
-    .then(() => console.log(`Cassandra reviews table dropped!`))
-    .catch(err => console.log(`Error dropping Cassandra table: ${err}`))
-};
-
-async function createCassandraTable() {
-  const createTable = `
-    CREATE TABLE reviews (
-      productid int,
-      author text,
-      rating smallint,
-      date date,
-      title text,
-      review text,
-      popularity int,
-      PRIMARY KEY (productid, author)
-    );
-  `
-  await db.client.execute(createTable)
-    .then(() => console.log(`Created Cassandra table!`))
-    .catch(err => console.log(`Error creating table in Cassandra: ${err}`))
-}
-
-// Drop Postgres table and create
-
+// Drop/create Postgres table
 async function dropPostgres() {
   await db.sequelize.authenticate()
     .then(async () => {
@@ -81,15 +53,7 @@ async function dropPostgres() {
     .catch((err) => console.log(`Error dropping Postgres table: ${err}`));
 }
 
-// Seeding
-
-async function seedCassandra() {
-  const query = `COPY reviews(productid, author, rating, date, popularity, review, title) FROM '/Users/mchung/HR/SDC/Napoleon-Service/test.csv' WITH header=true AND delimiter=',';`
-  await db.client.execute(query)
-    .then(() => console.log(`Cassandra's done seeding!`))
-    .catch(err => console.log(`Error seeding Cassandra: ${err}`));
-};
-
+// Seed
 async function seedPostgres() {
   console.time('Seed');
   const query = `COPY reviews(productid, author, rating, date, popularity, review, title) FROM '${path.join(__dirname, '../')}${filename}.csv' WITH (FORMAT csv, HEADER true);`
@@ -113,19 +77,7 @@ async function createIndex() {
 
 // Create CSV, drop/create table, seed db
 makeData(writer)
-  .then(async() => {
-    if(currentDB === 'postgres') {
-      return await dropPostgres();
-    } else if (currentDB === 'cassandra') {
-      return await dropCassandraTable();
-    }
-  })
-  .then(async() => {
-    if (currentDB === 'postgres') {
-      return await seedPostgres();
-    } else if (currentDB === 'cassandra') {
-      return await seedCassandra();
-    }
-  })
-  .then(async() => return await createIndex())
+  .then(async() => await dropPostgres())
+  .then(async() => await seedPostgres())
+  .then(async() => await createIndex())
   .catch(err => console.log(`Error seeding: ${err}`));
