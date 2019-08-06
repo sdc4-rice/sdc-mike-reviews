@@ -19,12 +19,13 @@
 1. Before starting ensure you have PostgreSQL/Cassandra.
 2. In your root directory create an .env file with config recommendations.
 
-< Recommended settings below
+< Recommended settings below- use personal new relic key
 PORT=3002
 START_ID=1
 END_ID=10000000
 DB=postgres
 CSV_FILENAME=reviews
+NEW_RELIC=12345
 
 3. In your terminal run npm install to install dependencies.
 4. Run npm run seed to seed database with mock data.
