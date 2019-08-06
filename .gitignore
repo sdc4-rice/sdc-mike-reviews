@@ -28,6 +28,3 @@ dist/
 
 # CSV
 *.csv
-
-#New Relic
-newrelic.js
