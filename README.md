@@ -25,6 +25,7 @@ START_ID=1
 END_ID=10000000
 DB=postgres
 CSV_FILENAME=reviews
+NEW_RELIC=12345 (personal new relic key)
 
 3. In your terminal run npm install to install dependencies.
 4. Run npm run seed to seed database with mock data.
