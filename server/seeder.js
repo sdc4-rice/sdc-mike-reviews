@@ -12,7 +12,7 @@ const writer = fs.createWriteStream(`${filename}.csv`);
 async function makeData(stream){
   console.time('CSV + seed')
   stream.write('productid,author,rating,date,popularity,review,title\n');
-  let i = 1000;
+  let i = 10000000;
   await write();
   stream.on('finish', () => console.timeEnd('data'));
   async function write() {
@@ -43,41 +43,28 @@ async function makeData(stream){
   }
 }
 
-// Drop/create Postgres table
-async function dropPostgres() {
-  await db.sequelize.authenticate()
-    .then(async () => {
-      await db.sequelize.sync({ force: true });
-      console.log(`Dropped Postgres DB!`);
+function seed() {
+  // test connection
+  return db.sequelize.authenticate()
+    // drop table/create table
+    .then(() => db.sequelize.sync({ force: true }))
+    // copy from CSV file
+    .then(() => {
+      const copy = `COPY reviews(productid, author, rating, date, popularity, review, title) FROM '${path.join(__dirname, '../')}${filename}.csv' WITH (FORMAT csv, HEADER true);`
+      return db.sequelize.query(copy);
     })
-    .catch((err) => console.log(`Error dropping Postgres table: ${err}`));
+    // index db
+    .then(() => {
+      const index = `CREATE INDEX idx_productid ON reviews(productid);`
+      console.timeEnd('CSV + seed')
+      console.time('Indexing');
+      return db.sequelize.query(index);
+    })
+    .then(() => console.timeEnd('Indexing'))
+    .catch(err => console.log(`Error seeding: ${err}`))
 }
 
-// Seed
-async function seedPostgres() {
-  console.time('Seed');
-  const query = `COPY reviews(productid, author, rating, date, popularity, review, title) FROM '${path.join(__dirname, '../')}${filename}.csv' WITH (FORMAT csv, HEADER true);`
-  await db.sequelize.query(query)
-    .then(async () => {
-      await console.log(`Postgres is done seeding!`)
-      await console.timeEnd('Seed')
-      await console.timeEnd('CSV + seed')
-    })
-    .catch(err => console.log(`Error seeding Postgres: ${err}`));
-};
-
-// Create index
-async function createIndex() {
-  const query = `CREATE INDEX idx_productid ON reviews(productid);`
-  console.time('Indexing');
-  await db.sequelize.query(query)
-    .then(async () => await console.timeEnd('Indexing'))
-    .catch(err => console.log(`Error indexing: ${err}`))
-};
-
-// Create CSV, drop/create table, seed db
 makeData(writer)
-  .then(async() => await dropPostgres())
-  .then(async() => await seedPostgres())
-  .then(async() => await createIndex())
-  .catch(err => console.log(`Error seeding: ${err}`));
+  .then(() => seed())
+  .catch(err => console.log(`Error: ${err}`))
+
