@@ -56,7 +56,7 @@ function seed() {
     // index db
     .then(() => {
       const index = `CREATE INDEX idx_productid ON reviews(productid);`
-      console.timeEnd('CSV + seed')
+      console.timeEnd('CSV + seed');
       console.time('Indexing');
       return db.sequelize.query(index);
     })
