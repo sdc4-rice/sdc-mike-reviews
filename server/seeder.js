@@ -1,6 +1,7 @@
 const faker = require('faker');
 const { Review } = require('./postgres.js');
 require('dotenv').config();
+const db = require('./postgres.js');
 
 const makeReview = function () {
   return {
@@ -28,4 +29,8 @@ async function seedDB(start, end) {
   console.timeEnd('SeedTime');
 };
 
-seedDB(1, 10000000);
+db.sequelize.authenticate()
+  .then(() => db.sequelize.sync({ force: true }))
+  .then(() => seedDB(1, 100))
+  .catch(err => console.log(`Error seeding: ${err}`));
+
