@@ -1,21 +1,30 @@
 import React from 'react';
-import Header from './header.jsx';
+import Header from './Header.jsx';
 import Ratings from './Ratings.jsx';
 import Reviews from './Reviews.jsx';
+
+function getCategoryId() {
+  const idString = window.location.href.split('?')[1] || '';
+  const idArray = idString.split('=');
+  if (idArray[0] === 'id') {
+    return idArray[1];
+  }
+  return 1; // default id if no id is provided
+}
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      urlId: window.location.href.substring(26) || 1,
+      urlId: getCategoryId(),
       reviews: [],
       load: false
     };
   }
 
   componentDidMount() {
-    this.setState({load: true }, () => { 
-      fetch(`http://localhost:3002/reviews/${this.state.urlId}`)
+    this.setState({load: true }, () => {
+      fetch(`/reviews/${this.state.urlId}`)
       .then((data) => data.json())
       .then((results) => {
         this.setState({reviews: results, load: false});
