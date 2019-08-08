@@ -23,7 +23,7 @@ class Reviews extends React.Component {
         vote: e.target.name,
         _id: e.target.className,
       };
-      fetch('http://localhost:3002/reviews', {
+      fetch('/reviews', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
